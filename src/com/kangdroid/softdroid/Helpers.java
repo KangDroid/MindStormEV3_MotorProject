@@ -15,12 +15,6 @@ public class Helpers {
 	 static EV3LargeRegulatedMotor RightMotor = new EV3LargeRegulatedMotor(MotorPort.C);
 	 static EV3GyroSensor gyro = new EV3GyroSensor(SensorPort.S1);
 	 static SampleProvider gyroSamples = gyro.getAngleMode();
-	 
-	 
-	 //Local Variables
-	 static int right;
-	 static int left;
-	 static int maxlimit;
 
 	 public static void moveForwardInfinite() {
 		 LeftMotor.setSpeed(100);
@@ -44,27 +38,7 @@ public class Helpers {
 			 RightMotor.close();
 		 }
 	 }
-	 
-	 public static void moveForwardandStop() {
-		 //Reset Motor just in case
-		 //LeftMotor.resetTachoCount();
-		 //RightMotor.resetTachoCount();
-		 //getTachoCount -- get current number of Tacho.
-		 // Set motor speed to 720 value.
-		 LeftMotor.setSpeed(100);
-		 RightMotor.setSpeed(100);
-		 // Now Let's move for 2 second.(2000ms)
-		 LeftMotor.forward();
-		 RightMotor.forward();
-		 Delay.msDelay(2000);
-		 // Stop motor (stop smoothly) : For now, do not stop motors since both motors are not stopping at same time
-		 LeftMotor.stop(true);
-		 RightMotor.stop(true);
-		 // Close motor
-		 LeftMotor.close();
-		 RightMotor.close();
-		// Delay.msDelay(2000);
-	 }
+
 	 public static void turnRight() {
 		 LeftMotor.setSpeed(100);
 		 LeftMotor.forward();

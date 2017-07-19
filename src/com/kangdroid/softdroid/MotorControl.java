@@ -11,7 +11,6 @@ public class MotorControl {
 	 static EV3UltrasonicSensor us = new EV3UltrasonicSensor(SensorPort.S4);
 	 static SampleProvider distanceMode = us.getDistanceMode();
 	 
-	 
  public static void main(String [] args) {
 	 // Enable  ultrasonic sensor
 	 us.enable();
