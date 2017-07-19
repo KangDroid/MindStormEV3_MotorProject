@@ -1,6 +1,5 @@
 package com.kangdroid.softdroid;
 
-import lejos.hardware.Button;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.SensorPort;
@@ -50,65 +49,61 @@ public class Helpers {
 	 }
 	 
 	  public static void avoidObject() {
-		 if (Button.ESCAPE.isDown() != true) {
-			 resetGyrosensors();
-				stopTheMotors();
-				while (true) {
-					float [] testing = new float[gyroSamples.sampleSize()];
-					gyroSamples.fetchSample(testing, 0);
-					 if (testing[0] >= -87f) {
-						 turnRight();
-					 } else {
-						 LeftMotor.stop(true);
-						 resetGyrosensors();
-						 break;
-					 }
-				}
-				moveForwardInfinite();
-				Delay.msDelay(4000);
-				stopTheMotors();
-				while (true) {
-					float [] testing = new float[gyroSamples.sampleSize()];
-					gyroSamples.fetchSample(testing, 0);
-					 if (testing[0] <= 87f) {
-						 Helpers.turnLeft();
-					 } else {
-						 RightMotor.stop(true);
-						 resetGyrosensors();
-						 break;
-					 }
-				}
-				moveForwardInfinite();
-				Delay.msDelay(4000);
-				stopTheMotors();
-				while (true) {
-					float [] testing = new float[gyroSamples.sampleSize()];
-					gyroSamples.fetchSample(testing, 0);
-					 if (testing[0] <= 87f) {
-						 Helpers.turnLeft();
-					 } else {
-						 RightMotor.stop(true);
-						 resetGyrosensors();
-						 break;
-					 }
-				}
-				moveForwardInfinite();
-				Delay.msDelay(4000);
-				stopTheMotors();
-				while (true) {
-					float [] testing = new float[gyroSamples.sampleSize()];
-					gyroSamples.fetchSample(testing, 0);
-					 if (testing[0] >= -87f) {
-						 Helpers.turnRight();
-					 } else {
-						 LeftMotor.stop(true);
-						 resetGyrosensors();
-						 break;
-					 }
-				}
-		 } else {
-			 System.exit(0);
-		 }
+		  resetGyrosensors();
+		  stopTheMotors();
+			while (true) {
+				float [] testing = new float[gyroSamples.sampleSize()];
+				gyroSamples.fetchSample(testing, 0);
+				 if (testing[0] >= -87f) {
+					 turnRight();
+				 } else {
+					 LeftMotor.stop(true);
+					 resetGyrosensors();
+					 break;
+				 }
+			}
+			moveForwardInfinite();
+			Delay.msDelay(4000);
+			stopTheMotors();
+			while (true) {
+				float [] testing = new float[gyroSamples.sampleSize()];
+				gyroSamples.fetchSample(testing, 0);
+				 if (testing[0] <= 87f) {
+					 Helpers.turnLeft();
+				 } else {
+					 RightMotor.stop(true);
+					 resetGyrosensors();
+					 break;
+				 }
+			}
+			moveForwardInfinite();
+			Delay.msDelay(4000);
+			stopTheMotors();
+			while (true) {
+				float [] testing = new float[gyroSamples.sampleSize()];
+				gyroSamples.fetchSample(testing, 0);
+				 if (testing[0] <= 87f) {
+					 Helpers.turnLeft();
+				 } else {
+					 RightMotor.stop(true);
+					 resetGyrosensors();
+					 break;
+				 }
+			}
+			moveForwardInfinite();
+			Delay.msDelay(4000);
+			stopTheMotors();
+			while (true) {
+				float [] testing = new float[gyroSamples.sampleSize()];
+				gyroSamples.fetchSample(testing, 0);
+				 if (testing[0] >= -87f) {
+					 Helpers.turnRight();
+				 } else {
+					 LeftMotor.stop(true);
+					 resetGyrosensors();
+					 break;
+				 }
+			}
 	 }
 	 
 	 /* This is the gyro sensor part. This one includes registering/unregistering of gyro sensor and getting angle as well. */
