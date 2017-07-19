@@ -11,30 +11,29 @@ public class MotorControl {
 	 static EV3UltrasonicSensor us = new EV3UltrasonicSensor(SensorPort.S4);
 	 static SampleProvider distanceMode = us.getDistanceMode();
 	 
-	 //Local Variables
-	 static int right;
-	 static int left;
-	 static int maxlimit;
 	 
  public static void main(String [] args) {
 	 // Enable  ultrasonic sensor
 	 us.enable();
+	 Helpers.resetGyrosensors();
 	 
 	 try {
 		 // move straight for infinite and stop if US detects in range of 10.
 		 while (true) {
+		     // INIT basic US Sensor 
+			 float[] sample = new float[distanceMode.sampleSize()];
+		     distanceMode.fetchSample(sample, 0);
+		     System.out.println("Angle is " + sample[0]); 
+		     
 			 if (Button.ESCAPE.isDown() != true) {
-				 MotorHelper.moveForwardInfinite(); 
+				 Helpers.moveForwardInfinite(); 
 			 } else {
 				 System.exit(0);
 			 }
-	     // INIT basic US Sensor 
-	     float[] sample = new float[distanceMode.sampleSize()];
-	     distanceMode.fetchSample(sample, 0);
 	     
 	     if (Button.ESCAPE.isDown() != true) { 	 
-	     		if (sample[0]*100 <= 10) {
-	     			avoidObject();
+	     		if (sample[0]*100 <= 20) {
+	     			Helpers.avoidObject();
 	    	 			continue;
 	     		}
 	     }
@@ -42,32 +41,10 @@ public class MotorControl {
 	 }
 	 catch(java.lang.Exception e) {
          System.out.println(e.toString());
-	 }
-	 
-	 // Disable ultrasonic sensor & Disable Motor
-     us.close();
-     MotorHelper.closeTheMotors();
+         Delay.msDelay(3000);
+	 } 
+	 us.close();
+	 Helpers.closeTheMotors();
+	 Helpers.unregisterGyrosensors();
  }
- 
- public static void avoidObject() {
-	 if (Button.ESCAPE.isDown() != true) {
-			MotorHelper.stopTheMotors();
-			MotorHelper.turnRight();
-			MotorHelper.moveForwardInfinite();
-			Delay.msDelay(4000);
-			MotorHelper.stopTheMotors();
-			MotorHelper.turnLeft();
-			MotorHelper.moveForwardInfinite();
-			Delay.msDelay(4000);
-			MotorHelper.stopTheMotors();
-			MotorHelper.turnLeft();
-			MotorHelper.moveForwardInfinite();
-			Delay.msDelay(4000);
-			MotorHelper.stopTheMotors();
-			MotorHelper.turnRight();
-	 } else {
-		 System.exit(0);
-	 }
- }
- 
 }
