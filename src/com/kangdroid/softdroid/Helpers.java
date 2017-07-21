@@ -49,8 +49,8 @@ public class Helpers {
 	 }
 	 
 	  public static void avoidObject() {
-		  resetGyrosensors();
 		  stopTheMotors();
+		  resetGyrosensors();
 			while (true) {
 				float [] testing = new float[gyroSamples.sampleSize()];
 				gyroSamples.fetchSample(testing, 0);
