@@ -1,6 +1,5 @@
 package com.kangdroid.softdroid;
 
-import lejos.hardware.Button;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
 import lejos.robotics.SampleProvider;
@@ -23,13 +22,11 @@ public class MotorControl {
 		     // INIT basic US Sensor 
 			 float[] sample = new float[distanceMode.sampleSize()];
 		     distanceMode.fetchSample(sample, 0);
-	     
-	     if (Button.ESCAPE.isDown() != true) { 	 
-	     		if (sample[0]*100 <= 20) {
-	     			Helpers.avoidObject();
-	    	 			continue;
-	     		}
-	     }
+		     
+     		if (sample[0]*100 <= 20) {
+     			Helpers.avoidObject();
+    	 			continue;
+     		}
 	    }
 	 }
 	 catch(java.lang.Exception e) {
