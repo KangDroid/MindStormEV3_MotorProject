@@ -53,15 +53,15 @@ public class Helpers {
 	 
 	  public static void avoidObject() {
 		  stopTheMotors();
-		  resetGyrosensors();
+		  //resetGyrosensors();
 			while (true) {
 				float [] testing = new float[gyroSamples.sampleSize()];
 				gyroSamples.fetchSample(testing, 0);
-				 if (testing[0] >= -87f) {
+				 if (testing[0] >= -90f) {
 					 turnRight();
 				 } else {
 					 LeftMotor.stop(true);
-					 resetGyrosensors();
+					 //resetGyrosensors();
 					 break;
 				 }
 			}
@@ -71,11 +71,11 @@ public class Helpers {
 			while (true) {
 				float [] testing = new float[gyroSamples.sampleSize()];
 				gyroSamples.fetchSample(testing, 0);
-				 if (testing[0] <= 87f) {
+				 if (testing[0] <= -0f) {
 					 Helpers.turnLeft();
 				 } else {
 					 RightMotor.stop(true);
-					 resetGyrosensors();
+					 //resetGyrosensors();
 					 break;
 				 }
 			}
@@ -85,11 +85,11 @@ public class Helpers {
 			while (true) {
 				float [] testing = new float[gyroSamples.sampleSize()];
 				gyroSamples.fetchSample(testing, 0);
-				 if (testing[0] <= 87f) {
+				 if (testing[0] <= 90f) {
 					 Helpers.turnLeft();
 				 } else {
 					 RightMotor.stop(true);
-					 resetGyrosensors();
+					 //resetGyrosensors();
 					 break;
 				 }
 			}
@@ -99,11 +99,11 @@ public class Helpers {
 			while (true) {
 				float [] testing = new float[gyroSamples.sampleSize()];
 				gyroSamples.fetchSample(testing, 0);
-				 if (testing[0] >= -87f) {
+				 if (testing[0] >= -0f) {
 					 Helpers.turnRight();
 				 } else {
 					 LeftMotor.stop(true);
-					 resetGyrosensors();
+					 //resetGyrosensors();
 					 break;
 				 }
 			}
