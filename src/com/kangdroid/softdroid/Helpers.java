@@ -4,6 +4,7 @@ import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3GyroSensor;
+import lejos.hardware.sensor.EV3UltrasonicSensor;
 import lejos.robotics.SampleProvider;
 import lejos.utility.Delay;
 
@@ -14,6 +15,8 @@ public class Helpers {
 	 static EV3LargeRegulatedMotor RightMotor = new EV3LargeRegulatedMotor(MotorPort.C);
 	 static EV3GyroSensor gyro = new EV3GyroSensor(SensorPort.S1);
 	 static SampleProvider gyroSamples = gyro.getAngleMode();
+	 static EV3UltrasonicSensor us = new EV3UltrasonicSensor(SensorPort.S4);
+	 static SampleProvider distanceMode = us.getDistanceMode();
 
 	 public static void moveForwardInfinite() {
 		 LeftMotor.setSpeed(100);
@@ -115,4 +118,5 @@ public class Helpers {
 	 public static void unregisterGyrosensors() {
 		 gyro.close();
 	 }
+	 
 }
