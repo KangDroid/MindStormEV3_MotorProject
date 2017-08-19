@@ -16,7 +16,7 @@ public class Helpers {
 	 static EV3GyroSensor gyro = new EV3GyroSensor(SensorPort.S1);
 	 static SampleProvider gyroSamples = gyro.getAngleMode();
 	 static EV3UltrasonicSensor us = new EV3UltrasonicSensor(SensorPort.S4);
-	 static SampleProvider distanceMode = us.getDistanceMode();
+	 //static SampleProvider distanceMode = us.getDistanceMode();
 
 	 public static void moveForwardInfinite() {
 		 LeftMotor.setSpeed(100);
@@ -49,6 +49,28 @@ public class Helpers {
 	 public static void turnLeft() {
 		 RightMotor.setSpeed(100);
 		 RightMotor.forward();
+	 }
+	 
+	 /* Functions for Back-Driving System. This won't be used until I simulate all-Best algorithm. */
+	 
+	 // Heading Left
+	 public static void turnBackwardLeft() {
+		 LeftMotor.setSpeed(100);
+		 LeftMotor.backward();
+	 }
+	 
+	 // Heading Right
+	 public static void turnBackwardRight() {
+		 RightMotor.setSpeed(100);
+		 RightMotor.backward();
+	 }
+	 
+	 // Going back
+	 public static void goBackward() {
+		 LeftMotor.setSpeed(100);
+		 RightMotor.setSpeed(100);
+		 LeftMotor.backward();
+		 RightMotor.backward();
 	 }
 	 
 	  public static void avoidObject() {
